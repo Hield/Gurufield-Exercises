@@ -46,7 +46,7 @@ namespace Task4
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<MovieContext>
-                    (options => options.UseSqlite("Data Source=movie.db"));
+                    (options => options.UseSqlite("Data Source=Movie.sqlite"));
 
             return services.BuildServiceProvider();
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Task2
 {
@@ -18,6 +19,12 @@ namespace Task2
                 a[index] = newNumber;
             }
             return a;
+        }
+
+
+        static Boolean NewIsUnique(List<int> l)
+        {
+            return (l.Count == new HashSet<int>(l).Count) && (l.Min() > 0) && (l.Max() <= l.Count);
         }
 
         static Boolean IsUnique(int[] a)
@@ -40,12 +47,16 @@ namespace Task2
         static void Main(string[] args)
         {
             // Test the testing function
-            Console.WriteLine(IsUnique(new int[] { 1, 1, 2 })); // Should return false
-            Console.WriteLine(IsUnique(new int[] { 1, 2, 4 })); // Should return false
-            Console.WriteLine(IsUnique(new int[] { 3, 1, 2 })); // Should return true
+            //Console.WriteLine(IsUnique(new int[] { 1, 1, 2 })); // Should return false
+            //Console.WriteLine(IsUnique(new int[] { 1, 2, 4 })); // Should return false
+            //Console.WriteLine(IsUnique(new int[] { 3, 1, 2 })); // Should return true
 
-            var a = GenerateArray(100000);
-            Console.WriteLine(IsUnique(a));
+            Console.WriteLine(NewIsUnique(new List<int> { 1, 1, 2 })); // Should return false
+            Console.WriteLine(NewIsUnique(new List<int> { 1, 2, 4 })); // Should return false
+            Console.WriteLine(NewIsUnique(new List<int> { 3, 1, 2 })); // Should return true
+
+            var a = new List<int>(GenerateArray(100000));
+            Console.WriteLine(NewIsUnique(a));
         }
     }
 }
